@@ -3,12 +3,13 @@ import React, { useState,useEffect } from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import img from "../img/NPF Logo-1.png"
 
 function Sidebar({ user, onLogout }) {
-    const [expended, setExpended] = useState(window.innerWidth > 480);
+    const [expended, setExpended] = useState(window.innerWidth > 576);
     useEffect(() => {
         const handleResize = () => {
-            setExpended(window.innerWidth > 480);
+            setExpended(window.innerWidth > 576);
         };
 
         window.addEventListener("resize", handleResize);
@@ -21,7 +22,7 @@ function Sidebar({ user, onLogout }) {
                 <div className="nav-heading">
                     {expended && (
                         <div className="nav-brand">
-                            <img src="https://timepay.com.pk/wp-content/uploads/2024/08/timepayweblogo.png" alt="" srcset="" />
+                            <img src={img} alt="" srcset="" />
                         </div>
                     )}
                     <button className={expended ? "hamburger hamburger-in" : "hamburger hamburger-out"} onClick={() => setExpended(!expended)}>
@@ -32,53 +33,27 @@ function Sidebar({ user, onLogout }) {
                 </div>
                 <div className={expended ? "nav-menu" : "nav-menu menu-item-NX"}>
                     <div className="nav-option option1">
-                        <i className="bi bi-house-door"></i> 
+                        <i className="bi bi-house-door" id="one"></i> 
                         <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                            <h3>Dashboard</h3>
+                            <h3 id="one">Dashboard</h3>
                         </Link>
                     </div>
 
                     <div className="nav-option option1">
-                        <i className="bi bi-people"></i> 
-                        <Link to="/User" style={{ textDecoration: "none" }}>
-                            <h3>User</h3>
+                    <i className="bi bi-clipboard" id="two"></i>
+                        <Link to="/task" style={{ textDecoration: "none" }}>
+                            <h3 id="two">Input Task</h3>
                         </Link>
                     </div>
 
                     <div className="nav-option option1">
-                        <i className="bi bi-receipt"></i> 
-                        <Link to="/digital" style={{ textDecoration: "none" }}>
-                            <h3>Digital Challan Register</h3>
-                        </Link>
-                    </div>
-
-                    <div className="nav-option option1">
-                        <i className="bi bi-check-circle"></i>
-                        <Link to="/verify" style={{ textDecoration: "none" }}>
-                            <h3>Verify Payment Status</h3>
-                        </Link>
-                    </div>
-
-                    <div className="nav-option option1">
-                        <i className="bi bi-clipboard-data"></i> 
-                        <Link to="/enforcement" style={{ textDecoration: "none" }}>
-                            <h3>Enforcement Campaign Report</h3>
-                        </Link>
-                    </div>
-
-                    <div className="nav-option option1">
-                        <i className="bi bi-exclamation-triangle"></i> 
-                        <Link to="/warning" style={{ textDecoration: "none" }}>
-                            <h3>Warning Register</h3>
-                        </Link>
-                    </div>
-
-                    <div className="nav-option option1">
-                        <i className="bi bi-box-arrow-right"></i> 
+                        <i className="bi bi-box-arrow-right" id="three"></i> 
                         <Link to="/" onClick={onLogout} style={{ textDecoration: "none" }}>
-                            <h3>Logout</h3>
+                            <h3 id="three">Logout</h3>
                         </Link>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
