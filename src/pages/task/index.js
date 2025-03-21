@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-// import './task.css'; 
 
-const TaskForm = () => {
+import './task.css'; 
+
+
+function TaskForm() {
     const [formData, setFormData] = useState({
         userId: '',
         date: '',
@@ -39,7 +41,7 @@ const TaskForm = () => {
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>
-        <h1>Add Task Details</h1>
+            <h1>Add Task Details</h1>
             <input
                 type="text"
                 name="userId"
@@ -47,8 +49,7 @@ const TaskForm = () => {
                 value={formData.userId}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="date"
                 name="date"
@@ -56,8 +57,7 @@ const TaskForm = () => {
                 value={formData.date}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="text"
                 name="task"
@@ -65,8 +65,7 @@ const TaskForm = () => {
                 value={formData.task}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="timeline"
@@ -74,16 +73,14 @@ const TaskForm = () => {
                 value={formData.timeline}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <textarea
                 name="activitiesPerformed"
                 placeholder="Activities Performed"
                 value={formData.activitiesPerformed}
                 onChange={handleChange}
                 className="form-textarea"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="percentage"
@@ -91,8 +88,7 @@ const TaskForm = () => {
                 value={formData.percentage}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="collection"
@@ -100,8 +96,7 @@ const TaskForm = () => {
                 value={formData.collection}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="expenditures"
@@ -109,8 +104,7 @@ const TaskForm = () => {
                 value={formData.expenditures}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="totalPendingLiabilities"
@@ -118,8 +112,7 @@ const TaskForm = () => {
                 value={formData.totalPendingLiabilities}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <input
                 type="number"
                 name="recovery"
@@ -127,11 +120,10 @@ const TaskForm = () => {
                 value={formData.recovery}
                 onChange={handleChange}
                 className="form-input"
-                required
-            />
+                required />
             <button type="submit" className="form-button">Create Task</button>
         </form>
     );
-};
+}
 
 export default TaskForm;

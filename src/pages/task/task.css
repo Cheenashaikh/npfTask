@@ -1,0 +1,107 @@
+.task-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    margin-top: -92%;
+}
+.task-form h1{
+    color: transparent;
+    background: linear-gradient(135deg, #023C72, #CAEDF6);
+    -webkit-background-clip: text;
+
+}
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #363887;
+    box-shadow: 0 0 8px rgba(54, 56, 135, 0.3);
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #023C72, #CAEDF6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.form-button:hover {
+    background: linear-gradient(135deg, #CAEDF6, #023C72);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .task-form {
+        padding: 15px;
+        margin-top: -200vh;
+        margin-left: 270px;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 14px;
+    }
+
+    .form-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:  576px) {
+    .task-form {
+        margin-left: 100px;
+        margin-top: -210vh;
+     
+    }}
+
+
+    @media (max-width: 480px) {
+        .task-form {
+            margin-left: 100px;
+            margin-top: -240vh;
+         
+        }}
+
+        @media (max-width: 320px) {
+            .task-form {
+                margin-left: 100px;
+                margin-top: -250vh;
+             
+            }}

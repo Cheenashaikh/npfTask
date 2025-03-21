@@ -1,38 +1,47 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/user');
 const Task = require('../models/task');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const { createTask, getTasksByUserId } = require('../controllers/taskController');
-const { getAllTasks } = require('../controllers/taskController');
 
-
-router.post('/tasks', async (req, res) => {
-    const { userId, date, task, timeline, activitiesPerformed, percentage, collection, expenditures, totalPendingLiabilities, recovery } = req.body;
+// ✅ Get all tasks
+router.get("/", async (req, res) => {
     try {
-        await Task.create(userId, date, task, timeline, activitiesPerformed, percentage, collection, expenditures, totalPendingLiabilities, recovery);
-        res.status(201).json({ message: 'Task created' });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-router.get('/tasks/:userId', async (req, res) => {
-    const { userId } = req.params;
-    try {
-        const tasks = await Task.findByUserId(userId);
+        const tasks = await Task.findAll(); // Correct usage
         res.json(tasks);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("❌ Error fetching tasks:", err);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
+// ✅ Get tasks by user ID
+router.get("/:userId", async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const tasks = await Task.findByUserId(userId); // Correct usage
+        res.json(tasks);
+    } catch (err) {
+        console.error("❌ Error fetching user tasks:", err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
-router.post('/tasks', createTask);
+// ✅ Create a new task
+router.post("/", async (req, res) => {
+    try {
+        const { userId, date, task, timeline, activitiesPerformed, percentage, collection, expenditures, totalPendingLiabilities, recovery } = req.body;
 
+        if (!userId || !task) {
+            return res.status(400).json({ error: "User ID and Task are required" });
+        }
 
-router.get('/tasks/:userId', getTasksByUserId);
-router.get('/tasks', getAllTasks);
+        const taskId = await Task.create(userId, date, task, timeline, activitiesPerformed, percentage, collection, expenditures, totalPendingLiabilities, recovery);
+        res.status(201).json({ message: "Task created successfully", taskId });
+    } catch (err) {
+        console.error("❌ Error creating task:", err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+);
 
 module.exports = router;

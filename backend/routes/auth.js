@@ -33,18 +33,9 @@ router.post('/login', async (req, res) => {
         if (password !== user.password) return res.status(400).json({ error: 'Invalid credentials' });
 
         const token = jwt.sign({ id: user.id }, 'secretkey');
-        res.json({ token });
+        res.json({ token,user });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
-
-
-
-
-
-
-
-
-
 module.exports = router;

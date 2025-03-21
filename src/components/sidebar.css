@@ -4,12 +4,25 @@
     height: 200vh;
     position: relative;
    
-    background-color: #804560;
+    background-color: #ffff;
     margin-left: 1px;
     padding: 20px;
     transition: 0.4s;
-    color: #ffff;
+    
     z-index: 1;
+  
+}
+#one{
+    color: #87C254;
+
+}
+#two{
+    color: #239E82;
+
+}
+#three{
+    color: #37ADCF;
+
 }
 .nav-menu h3{
   
@@ -24,8 +37,9 @@ color: #ffff;
     width: 100px;
 }
 .nav-brand img{
-  width: 100px;
+  width: 120px;
   padding: 0px 10px;  
+  mix-blend-mode: multiply;
 }
 .nav-brand{
     display: flex;
@@ -45,6 +59,7 @@ color: #ffff;
   color: #ffff;
   transition: color 0.3s ease-in-out;
   margin-top: 20px;
+  /* font-size: 20px; */
 }
 
 .nav-option:hover i,
@@ -65,22 +80,27 @@ color: #ffff;
     margin: auto;
 position: absolute;
 right: 0;
-margin-right: 10px;
+margin-right: -100%;
+
+
 }
 .hamburger span{
     display: block;
     margin-top: 5px;
-    /* background: var(--primary-color); */
+
     background: #fff;
     border-radius: 15px;
     height: 2px;
     width: 20px;
     transition: 0.4s;
+    background-color:#239E82;;
+    
 
 }
 
 .hamburger:hover span{
-    background-color: var(--secondary-color);
+    /* background-color: var(--secondary-color); */
+    background-color:#239E82;;
 }
 .hamburger-in:hover span :nth-child(1){
     width: 25px;
@@ -121,9 +141,29 @@ width: 40px;
     display: none;
 }
 
+@media screen and (max-width: 768px) {
+    .side-nav-container {
+        /* width: 10vh; */
+    }
+    .hamburger{
+        margin-right: -10vh;
+    }
+    .hamburger-in{
+        margin-right: -25vh;
+    }
+}
 @media screen and (max-width: 576px) {
+
     .side-nav-container {
         height: 210vh;
+        z-index: 1;
+       
+    }
+    .hamburger{
+        margin-right: -5vh;
+    }
+    .hamburger-in{
+        margin-right: -25vh;
     }
 }
 
